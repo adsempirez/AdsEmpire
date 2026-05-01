@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADS EMPIRE</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(270deg, #0f2027, #203a43, #2c5364);
+    background-size: 600% 600%;
+    animation: gradientMove 10s ease infinite;
+    color: white;
+    text-align: center;
+}
+
+@keyframes gradientMove {
+    0% {background-position: 0%;}
+    50% {background-position: 100%;}
+    100% {background-position: 0%;}
+}
+
+.container {
+    padding: 30px;
+    animation: fadeIn 2s ease;
+}
+
+.logo {
+    width: 110px;
+    border-radius: 50%;
+    margin-top: 20px;
+    box-shadow: 0 0 20px #00ffcc;
+}
+
+h1 {
+    font-size: 42px;
+    margin-top: 10px;
+    color: #00ffcc;
+}
+
+.subtitle {
+    margin-top: 5px;
+    font-size: 18px;
+    opacity: 0.8;
+}
+
+.badge {
+    margin: 15px auto;
+    display: inline-block;
+    padding: 8px 15px;
+    background: rgba(0,255,204,0.2);
+    border-radius: 20px;
+}
+
+.services {
+    margin-top: 25px;
+}
+
+.card {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    margin: 10px auto;
+    padding: 15px;
+    max-width: 420px;
+    display: flex;
+    justify-content: space-between;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.buttons {
+    margin-top: 25px;
+}
+
+button {
+    width: 80%;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 30px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+.btn1 {background: #00ffcc;}
+.btn2 {background: #25D366;}
+.btn3 {background: #ffcc00;}
+
+.qr-section {
+    display: none;
+    margin-top: 20px;
+}
+
+.qr-section img {
+    width: 180px;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<img src="your-logo.png" class="logo">
+
+<h1>ADS EMPIRE</h1>
+<div class="subtitle">Smart Ad Solutions</div>
+
+<div class="badge">🔥 500+ Trusted Clients</div>
+
+<div class="services">
+    <div class="card"><span>Forex Ads Setup</span><span>₹6000</span></div>
+    <div class="card"><span>Cricket Campaign</span><span>₹5000</span></div>
+    <div class="card"><span>Binary Ads</span><span>₹5000</span></div>
+    <div class="card"><span>Premium Campaign</span><span>₹10000</span></div>
+</div>
+
+<div class="buttons">
+    <button class="btn1" onclick="window.location.href='https://t.me/YOUR_CHANNEL'">
+        🚀 Join Telegram
+    </button>
+
+    <button class="btn2" onclick="window.location.href='https://wa.me/91XXXXXXXXXX'">
+        💬 Contact WhatsApp
+    </button>
+
+    <button class="btn3" onclick="showQR()">
+        💰 Pay Now
+    </button>
+</div>
+
+<div class="qr-section" id="qr">
+    <img src="your-qr.png">
+    <p>Scan & Pay Securely</p>
+</div>
+
+</div>
+
+<script>
+function showQR(){
+    document.getElementById("qr").style.display = "block";
+}
+</script>
+
+</body>
+</html>
