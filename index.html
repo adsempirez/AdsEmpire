@@ -3,118 +3,138 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ADS EMPIRE</title>
+<title>Premium Access</title>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
 body {
-    background: linear-gradient(270deg, #0f2027, #203a43, #2c5364);
-    background-size: 600% 600%;
-    animation: gradientMove 10s ease infinite;
-    color: white;
-    text-align: center;
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:#0f2027;
+    color:white;
+    overflow-x:hidden;
 }
 
-@keyframes gradientMove {
-    0% {background-position: 0%;}
-    50% {background-position: 100%;}
-    100% {background-position: 0%;}
+/* Animated background */
+body::before {
+    content:"";
+    position:fixed;
+    width:200%;
+    height:200%;
+    background:linear-gradient(45deg,#00f2ff,#ff00c8,#00ff95);
+    animation:rotate 12s linear infinite;
+    opacity:0.08;
 }
+@keyframes rotate {100%{transform:rotate(360deg);}}
 
+/* Container */
 .container {
-    padding: 30px;
-    animation: fadeIn 2s ease;
+    text-align:center;
+    padding:60px 20px;
 }
 
+/* Logo */
 .logo {
-    width: 110px;
-    border-radius: 50%;
-    margin-top: 20px;
-    box-shadow: 0 0 20px #00ffcc;
+    width:120px;
+    border-radius:50%;
+    box-shadow:0 0 25px cyan;
+    animation:float 3s infinite;
 }
+@keyframes float {50%{transform:translateY(-10px);}}
 
+/* Heading */
 h1 {
-    font-size: 42px;
-    margin-top: 10px;
-    color: #00ffcc;
+    font-size:34px;
+    margin-top:20px;
+    background:linear-gradient(90deg,#00f2ff,#ff00c8);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
 }
 
-.subtitle {
-    margin-top: 5px;
-    font-size: 18px;
-    opacity: 0.8;
+/* Live counter */
+.counter {
+    margin-top:15px;
+    font-size:18px;
+    color:#00ff95;
 }
 
-.badge {
-    margin: 15px auto;
-    display: inline-block;
-    padding: 8px 15px;
-    background: rgba(0,255,204,0.2);
-    border-radius: 20px;
+/* Timer */
+.timer {
+    margin-top:10px;
+    font-size:20px;
+    color:#ffcc00;
 }
 
-.services {
-    margin-top: 25px;
+/* Buttons row */
+.row {
+    margin-top:40px;
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
 }
 
-.card {
-    background: rgba(255,255,255,0.08);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    margin: 10px auto;
-    padding: 15px;
-    max-width: 420px;
-    display: flex;
-    justify-content: space-between;
-    transition: 0.3s;
+.btn {
+    padding:12px 22px;
+    border-radius:30px;
+    cursor:pointer;
+    border:none;
+    transition:0.3s;
 }
 
-.card:hover {
-    transform: scale(1.05);
+/* Buttons colors */
+.telegram {background:linear-gradient(45deg,#0088cc,#00f2ff);}
+.qr {background:linear-gradient(45deg,#ff00c8,#ff7b00);}
+.whatsapp {background:linear-gradient(45deg,#25D366,#00ff95);}
+
+.btn:hover {
+    transform:scale(1.1);
+    box-shadow:0 0 15px white;
 }
 
-.buttons {
-    margin-top: 25px;
+/* Price */
+.price-card {
+    margin-top:50px;
+    padding:30px;
+    border-radius:20px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(10px);
 }
 
-button {
-    width: 80%;
-    padding: 15px;
-    margin: 10px;
-    border-radius: 30px;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.3s;
+.price {
+    font-size:32px;
+    color:#00ff95;
 }
 
-button:hover {
-    transform: scale(1.1);
+/* Testimonials */
+.testimonials {
+    margin-top:60px;
 }
 
-.btn1 {background: #00ffcc;}
-.btn2 {background: #25D366;}
-.btn3 {background: #ffcc00;}
-
-.qr-section {
-    display: none;
-    margin-top: 20px;
+.testimonial {
+    margin:15px auto;
+    max-width:300px;
+    padding:15px;
+    background:rgba(255,255,255,0.07);
+    border-radius:15px;
 }
 
-.qr-section img {
-    width: 180px;
+/* Popup QR */
+.popup {
+    display:none;
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.85);
+    justify-content:center;
+    align-items:center;
 }
 
-@keyframes fadeIn {
-    from {opacity: 0; transform: translateY(20px);}
-    to {opacity: 1; transform: translateY(0);}
+.popup img {
+    width:320px;
+    border-radius:10px;
 }
+
+.popup.active {display:flex;}
 
 </style>
 </head>
@@ -125,43 +145,67 @@ button:hover {
 
 <img src="IMG_20260501_230803_508.jpg.jpeg" class="logo">
 
-<h1>ADS EMPIRE</h1>
-<div class="subtitle">Smart Ad Solutions</div>
+<h1>Join Premium Telegram</h1>
 
-<div class="badge">🔥 500+ Trusted Clients</div>
+<div class="counter" id="counter">🔥 127 people joined today</div>
+<div class="timer" id="timer">Offer ends in: 05:00</div>
 
-<div class="services">
-    <div class="card"><span>Forex Ads Setup</span><span>₹6000</span></div>
-    <div class="card"><span>Cricket Campaign</span><span>₹5000</span></div>
-    <div class="card"><span>Binary Ads</span><span>₹5000</span></div>
-    <div class="card"><span>Premium Campaign</span><span>₹10000</span></div>
+<!-- BUTTONS -->
+<div class="row">
+    <button class="btn telegram" onclick="tg()">Telegram</button>
+    <button class="btn qr" onclick="qr()">QR Code</button>
+    <button class="btn whatsapp" onclick="wa()">WhatsApp</button>
 </div>
 
-<div class="buttons">
-    <button class="btn1" onclick="window.location.href='https://t.me/+PzoZiNRCvN5hMjY1'">
-        🚀 Join Telegram
-    </button>
-
-    <button class="btn2" onclick="window.location.href='https://wa.me/918532911575'">
-        💬 Contact WhatsApp
-    </button>
-
-    <button class="btn3" onclick="showQR()">
-        💰 Pay Now
-    </button>
+<!-- PRICE -->
+<div class="price-card">
+    <p>Premium Access</p>
+    <div class="price">₹199</div>
 </div>
 
-<div class="qr-section" id="qr">
+<!-- TESTIMONIALS -->
+<div class="testimonials">
+    <h2>What Members Say</h2>
+
+    <div class="testimonial">"Bhai paisa vasool 🔥"</div>
+    <div class="testimonial">"Signals mast kaam karte hain"</div>
+    <div class="testimonial">"Joined today, already profit 😎"</div>
+</div>
+
+</div>
+
+<!-- QR POPUP -->
+<div class="popup" id="popup" onclick="closeQR()">
     <img src="your-qr.png.png">
-    <p>Scan & Pay Securely</p>
-</div>
-
 </div>
 
 <script>
-function showQR(){
-    document.getElementById("qr").style.display = "block";
-}
+// Telegram
+function tg(){window.open("https://t.me/+PzoZiNRCvN5hMjY1");}
+
+// WhatsApp
+function wa(){window.open("https://wa.me/918532911575");}
+
+// QR
+function qr(){document.getElementById("popup").classList.add("active");}
+function closeQR(){document.getElementById("popup").classList.remove("active");}
+
+// Counter animation
+let count = 127;
+setInterval(()=>{
+    count++;
+    document.getElementById("counter").innerText="🔥 "+count+" people joined today";
+},3000);
+
+// Timer countdown
+let time = 300;
+setInterval(()=>{
+    let m = Math.floor(time/60);
+    let s = time%60;
+    document.getElementById("timer").innerText="Offer ends in: "+m+":"+ (s<10?"0"+s:s);
+    if(time>0) time--;
+},1000);
+
 </script>
 
 </body>
